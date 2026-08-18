@@ -135,16 +135,22 @@ class GameInfo {
 
 const List<GameInfo> games = [
   GameInfo(
-    title: 'GI Fisiologia',
-    description: 'Teste seus conhecimentos de fisiologia!',
+    title: 'TGI Quest',
+    description: 'TGI Quest',
     url: 'https://edu-vocabulary-builder-valle-gi-phy.vercel.app', // EDIT ME
-    icon: Icons.man,
+    icon: Icons.question_mark_outlined,
   ),
   GameInfo(
-    title: 'Outro jogo',
-    description: 'Template outro jogo',
-    url: 'https://example.com/organ-quiz', // EDIT ME
-    icon: Icons.gamepad,
+    title: 'Defesa Imune',
+    description: 'Defesa Imune',
+    url: 'https://web-game-maker--chatgptdarapazi.replit.app', // EDIT ME
+    icon: Icons.health_and_safety,
+  ),
+  GameInfo(
+    title: 'Missão Néfron',
+    description: 'Missão Néfron',
+    url: 'https://game-builder--vallemateus.replit.app', // EDIT ME
+    icon: Icons.medical_information,
   ),
 ];
 
