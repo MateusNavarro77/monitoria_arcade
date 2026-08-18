@@ -221,7 +221,7 @@ class _HubHeader extends StatelessWidget {
         ),
         const SizedBox(height: 14),
         Text(
-          'Escolha seu modulo:',
+          'Escolha seu módulo:',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: 6),
