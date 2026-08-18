@@ -123,13 +123,13 @@ class GameInfo {
   final String title;
   final String description;
   final String url;
-  final IconData icon;
+  final String imageAsset;
 
   const GameInfo({
     required this.title,
     required this.description,
     required this.url,
-    required this.icon,
+    required this.imageAsset,
   });
 }
 
@@ -138,19 +138,19 @@ const List<GameInfo> games = [
     title: 'TGI Quest',
     description: 'TGI Quest',
     url: 'https://edu-vocabulary-builder-valle-gi-phy.vercel.app', // EDIT ME
-    icon: Icons.question_mark_outlined,
+    imageAsset: 'assets/images/tgi_quest.png',
   ),
   GameInfo(
     title: 'Defesa Imune',
     description: 'Defesa Imune',
     url: 'https://web-game-maker--chatgptdarapazi.replit.app', // EDIT ME
-    icon: Icons.health_and_safety,
+    imageAsset: 'assets/images/defesa_imune.png',
   ),
   GameInfo(
     title: 'Missão Néfron',
     description: 'Missão Néfron',
     url: 'https://game-builder--vallemateus.replit.app', // EDIT ME
-    icon: Icons.medical_information,
+    imageAsset: 'assets/images/missao_nefron.png',
   ),
 ];
 
@@ -214,7 +214,7 @@ class _HubHeader extends StatelessWidget {
         Text(
           'Two interactive quizzes on human anatomy.',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-            color: AnatomyColors.foreground.withOpacity(0.7),
+            color: AnatomyColors.foreground.withValues(alpha: 0.7),
           ),
         ),
       ],
@@ -259,7 +259,7 @@ class GameCard extends StatelessWidget {
           );
         },
         child: Container(
-          padding: const EdgeInsets.all(18),
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(14),
             border: Border.all(color: AnatomyColors.border, width: 1),
@@ -267,20 +267,30 @@ class GameCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 52,
-                height: 52,
+                width: 56,
+                height: 56,
+                padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(
-                  color: AnatomyColors.background,
-                  shape: BoxShape.circle,
+                  color: AnatomyColors.sidebarDark,
+                  borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: AnatomyColors.primaryTeal,
-                    width: 1.4,
+                    color: AnatomyColors.primaryTeal.withValues(alpha: 0.4),
+                    width: 1.2,
                   ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AnatomyColors.primaryTeal.withValues(alpha: 0.12),
+                      blurRadius: 8,
+                      spreadRadius: 1,
+                    ),
+                  ],
                 ),
-                child: Icon(
-                  game.icon,
-                  color: AnatomyColors.primaryTeal,
-                  size: 26,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8),
+                  child: Image.asset(
+                    game.imageAsset,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
               const SizedBox(width: 16),
@@ -365,7 +375,7 @@ class _GameWebViewScreenState extends State<GameWebViewScreen> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
-      onPopInvoked: (didPop) async {
+      onPopInvokedWithResult: (didPop, result) async {
         if (didPop) return;
         if (await _handleBack()) {
           if (context.mounted) Navigator.of(context).pop();
@@ -480,7 +490,7 @@ class _AnatomyLineArtPainter extends CustomPainter {
 
     // Rib-cage-like arcs in the top-left corner, very faint
     final ribPaint = Paint()
-      ..color = AnatomyColors.glowLine.withOpacity(0.7)
+      ..color = AnatomyColors.glowLine.withValues(alpha: 0.7)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.0;
 
