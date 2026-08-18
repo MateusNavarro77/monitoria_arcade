@@ -107,7 +107,7 @@ class AnatomyHubApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Anatomy Quiz Hub',
+      title: 'GTArcade',
       debugShowCheckedModeBanner: false,
       theme: buildAnatomyTheme(),
       home: const HubScreen(),
@@ -164,7 +164,7 @@ class HubScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('ANATOMY QUIZ HUB')),
+      appBar: AppBar(title: const Text('GTArcade')),
       body: Stack(
         children: [
           // Decorative faint anatomical line art background
@@ -185,6 +185,20 @@ class HubScreen extends StatelessWidget {
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: Text(
+            'Monitoria GT2 2026.2-2027.2',
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+              color: AnatomyColors.mutedForeground,
+              fontSize: 12,
+              letterSpacing: 0.8,
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -207,12 +221,12 @@ class _HubHeader extends StatelessWidget {
         ),
         const SizedBox(height: 14),
         Text(
-          'Choose a study module',
+          'Escolha seu modulo:',
           style: Theme.of(context).textTheme.headlineMedium,
         ),
         const SizedBox(height: 6),
         Text(
-          'Two interactive quizzes on human anatomy.',
+          '3 games sobre Fisiologia',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
             color: AnatomyColors.foreground.withValues(alpha: 0.7),
           ),
@@ -302,11 +316,11 @@ class GameCard extends StatelessWidget {
                       game.title,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 4),
-                    Text(
-                      game.description,
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
+                    // const SizedBox(height: 4),
+                    // Text(
+                    //   game.description,
+                    //   style: Theme.of(context).textTheme.bodyMedium,
+                    // ),
                   ],
                 ),
               ),
